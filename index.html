@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shwe Pyi Soe - Portfolio</title>
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        :root {
+            --bg-color: #0b1528;
+            --card-bg: #152238;
+            --text-color: #ffffff;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8;
+            --border-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px 10px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+        }
+
+        .avatar-container {
+            width: 120px;
+            height: 150px;
+            border: 2px solid var(--text-muted);
+            border-radius: 12px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(255,255,255,0.05);
+            cursor: pointer;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-placeholder {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 5px;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        h1 {
+            font-size: 24px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: var(--accent-color);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .meta-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .tag {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        /* Section Typography */
+        h2 {
+            font-size: 16px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        p {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+
+        /* List Layouts */
+        ul {
+            list-style: none;
+        }
+
+        li {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Education & Experience Items */
+        .item {
+            margin-bottom: 16px;
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .item-sub {
+            font-size: 12px;
+            color: var(--accent-color);
+            margin-bottom: 4px;
+        }
+
+        .item-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            padding-left: 10px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        /* Languages Progress */
+        .lang-item {
+            margin-bottom: 12px;
+        }
+
+        .lang-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .lang-name {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .lang-level {
+            color: var(--text-muted);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HERO CARD -->
+    <div class="card hero">
+        <div class="avatar-container" onclick="document.getElementById('file-input').click()">
+            <div class="avatar-placeholder" id="placeholder-text">Click to<br>Upload Photo</div>
+            <img id="avatar-img" src="" style="display:none;">
+        </div>
+        <input type="file" id="file-input" accept="image/*" onchange="loadPhoto(event)">
+
+        <h1>Shwe Pyi Soe</h1>
+        <div class="subtitle">Machine Learning Student | SDR-Based Signal Analysis</div>
+        
+        <div class="meta-tags">
+            <div class="tag"><i class="fa-regular fa-envelope"></i> <a href="mailto:de2334600@gmail.com">de2334600@gmail.com</a></div>
+            <div class="tag"><i class="fa-solid fa-phone"></i> +7 emergency services 130 6245</div>
+            <div class="tag"><i class="fa-regular fa-calendar"></i> 13 April 2002</div>
+            <div class="tag"><i class="fa-solid fa-location-dot"></i> Saint Petersburg, Russia</div>
+        </div>
+    </div>
+
+    <!-- PROFILE CARD -->
+    <div class="card">
+        <h2><i class="fa-regular fa-user"></i> Profile</h2>
+        <p>Master's student at Peter the Great St. Petersburg Polytechnic University (SPbPU), specializing in Machine Learning, with a Bachelor's degree in Mathematics from Defence Services Academy (DSA).</p>
+        <br>
+        <p>Interested in Machine Learning, signal analysis, Software-Defined Radio (SDR), and object detection. Currently exploring how signals received through SDR can be analyzed and classified using Machine Learning methods to identify different objects, particularly airborne objects.</p>
+    </div>
+
+    <!-- EDUCATION CARD -->
+    <div class="card">
+        <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+        
+        <div class="item">
+            <div class="item-title">Peter the Great St. Petersburg Polytechnic University (SPbPU)</div>
+            <div class="item-sub">Master's Degree — Machine Learning (Program: 27.04.04.08)</div>
+        </div>
+        
+        <div class="item" style="margin-top: 14px;">
+            <div class="item-title">Defence Services Academy (DSA)</div>
+            <div class="item-sub">Bachelor of Science (BSc) — Mathematics</div>
+            <div class="item-desc">
+                <strong>Bachelor's Thesis:</strong> Solving Linear Programming Problems Using the Dual Simplex Method
+            </div>
+        </div>
+    </div>
+
+    <!-- EXPERIENCE CARD -->
+    <div class="card">
+        <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+        <div class="item-title">Navy</div>
+        <div class="item-sub">2 Years</div>
+        <ul style="margin-top: 6px;">
+            <li>Experience working in a structured and disciplined environment.</li>
+            <li>Developed teamwork, responsibility, and the ability to work under demanding conditions.</li>
+            <li>Developed an interest in technologies applicable to maritime and ship-based systems.</li>
+        </ul>
+    </div>
+
+    <!-- LANGUAGES CARD -->
+    <div class="card">
+        <h2><i class="fa-solid fa-language"></i> Languages</h2>
+        
+        <div class="lang-item">
+            <div class="lang-info">
+                <span class="lang-name">Burmese</span>
+                <span class="lang-level">Native</span>
+            </div>
+            <div class="progress-bar"><div class="progress" style="width: 100%;"></div></div>
+        </div>
+
+        <div class="lang-item">
+            <div class="lang-info">
+                <span class="lang-name">English</span>
+                <span class="lang-level">Level 4</span>
+            </div>
+            <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+        </div>
+
+        <div class="lang-item">
+            <div class="lang-info">
+                <span class="lang-name">Russian</span>
+                <span class="lang-level">Level 3</span>
+            </div>
+            <div class="progress-bar"><div class="progress" style="width: 60%;"></div></div>
+        </div>
+    </div>
+
+    <!-- CAREER OBJECTIVE CARD -->
+    <div class="card">
+        <h2><i class="fa-solid fa-bullseye"></i> Career Objective</h2>
+        <p>I would like to continue developing my knowledge and practical skills in Machine Learning, particularly in the analysis and classification of signals obtained from SDR systems.</p>
+        <br>
