@@ -1,249 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="my">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shwe Pyi Soe - Portfolio</title>
-    <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <title>Shwe Pyi Soe - Tech Portfolio</title>
     <style>
         :root {
-            --bg-color: #0b1528;
-            --card-bg: #152238;
-            --text-color: #ffffff;
+            --bg-color: #0b111e;
+            --card-bg: #151f32;
+            --accent-cyan: #00f2fe;
+            --accent-blue: #4facfe;
+            --text-main: #f1f5f9;
             --text-muted: #94a3b8;
-            --accent-color: #38bdf8;
-            --border-color: #1e293b;
+            --badge-bg: rgba(0, 242, 254, 0.1);
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             line-height: 1.6;
-            padding: 20px 10px;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
         }
 
         .container {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Card Styles */
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-        }
-
-        .avatar-container {
-            width: 130px;
-            height: 160px;
-            border: 2px dashed var(--accent-color);
-            border-radius: 12px;
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            background-color: rgba(56, 189, 248, 0.05);
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .avatar-container:hover {
-            background-color: rgba(56, 189, 248, 0.1);
-        }
-
-        .avatar-container img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
+            max-width: 800px;
+        }
+
+        /* Hero / Header Section */
+        .hero-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            margin-bottom: 30px;
         }
 
         .avatar-placeholder {
-            font-size: 13px;
-            color: var(--accent-color);
-            text-align: center;
-            pointer-events: none;
-        }
-
-        .avatar-placeholder i {
-            font-size: 24px;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        #file-input {
-            display: none;
-        }
-
-        h1 {
-            font-size: 24px;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .subtitle {
-            color: var(--accent-color);
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .meta-tags {
+            width: 110px;
+            height: 140px;
+            border: 2px solid var(--accent-cyan);
+            border-radius: 12px;
+            margin: 0 auto 20px;
             display: flex;
-            flex-direction: column;
-            gap: 10px;
             align-items: center;
-            margin-top: 16px;
-        }
-
-        .tag-row {
-            display: flex;
-            gap: 10px;
-            width: 100%;
             justify-content: center;
+            background: rgba(255,255,255,0.05);
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
         }
 
-        .tag {
-            background-color: rgba(255, 255, 255, 0.06);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            color: #e2e8f0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .hero-card h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+        }
+
+        .hero-card .subtitle {
+            color: var(--accent-cyan);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: var(--text-main);
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .tag a {
-            color: #e2e8f0;
-            text-decoration: none;
+        .meta-flex {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
         }
 
-        /* Section Typography */
+        .meta-badge {
+            background: rgba(79, 172, 254, 0.1);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            border: 1px solid rgba(79, 172, 254, 0.2);
+        }
+
+        /* Main Section Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 254, 0.2);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-blue));
+            border-radius: 16px 0 0 16px;
+        }
+
         h2 {
-            font-size: 16px;
-            color: var(--accent-color);
+            color: var(--accent-cyan);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            letter-spacing: 2px;
         }
 
         p {
-            font-size: 14px;
-            color: var(--text-muted);
+            color: var(--text-main);
+            margin-bottom: 15px;
             text-align: justify;
         }
 
-        /* List Layouts */
-        ul {
+        .highlight {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* Timeline Items */
+        .timeline-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: -6px;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .timeline-subtitle {
+            color: var(--accent-blue);
+            font-size: 0.95rem;
+            margin: 2px 0 8px 0;
+        }
+
+        .thesis-box {
+            background: rgba(0, 242, 254, 0.03);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-cyan);
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        /* Experience List */
+        .bullet-list {
             list-style: none;
         }
 
-        li {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
+        .bullet-list li {
             position: relative;
-            padding-left: 15px;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-main);
         }
 
-        li::before {
-            content: "•";
-            color: var(--accent-color);
+        .bullet-list li::before {
+            content: "▹";
             position: absolute;
             left: 0;
-            font-weight: bold;
+            color: var(--accent-cyan);
         }
 
-        /* Education & Experience Items */
-        .item {
-            margin-bottom: 16px;
+        /* Languages Grid */
+        .lang-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
 
-        .item:last-child {
-            margin-bottom: 0;
-        }
-
-        .item-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: var(--text-color);
-        }
-
-        .item-sub {
-            font-size: 12px;
-            color: var(--accent-color);
-            margin-bottom: 4px;
-        }
-
-        .item-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-top: 4px;
-            padding-left: 10px;
-            border-left: 2px solid var(--border-color);
-        }
-
-        /* Languages Progress */
-        .lang-item {
-            margin-bottom: 12px;
-        }
-
-        .lang-info {
+        .lang-card {
+            background: rgba(255,255,255,0.02);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
             display: flex;
             justify-content: space-between;
-            font-size: 13px;
-            margin-bottom: 4px;
+            align-items: center;
         }
 
         .lang-name {
-            color: var(--text-color);
             font-weight: 500;
         }
 
         .lang-level {
-            color: var(--text-muted);
-        }
-
-        .progress-bar {
-            height: 6px;
-            background-color: var(--border-color);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress {
-            height: 100%;
-            background-color: var(--accent-color);
-            border-radius: 4px;
+            background: var(--badge-bg);
+            color: var(--accent-cyan);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -251,87 +250,79 @@
 
 <div class="container">
 
-    <!-- HERO CARD -->
-    <div class="card hero">
-        <div class="avatar-container" onclick="document.getElementById('file-input').click()">
-            <div class="avatar-placeholder" id="placeholder-text">
-                <i class="fa-regular fa-image"></i>
-                Click to<br>Upload Photo
-            </div>
-            <img id="avatar-img" style="display:none;">
+    <!-- HERO SECTION -->
+    <div class="hero-card">
+        <div class="avatar-placeholder">
+            <span>[ Photo ]</span>
         </div>
-        <input type="file" id="file-input" accept="image/*">
-
-        <h1>Shwe Pyi Soe</h1>
+        <h1>SHWE PYI SOE</h1>
         <div class="subtitle">Machine Learning Student | SDR-Based Signal Analysis</div>
         
-        <div class="meta-tags">
-            <div class="tag-row">
-                <div class="tag"><i class="fa-regular fa-envelope"></i> <a href="mailto:de2334600@gmail.com">de2334600@gmail.com</a></div>
-                <div class="tag"><i class="fa-solid fa-phone"></i> +79111306245</div>
-            </div>
-            <div class="tag-row">
-                <div class="tag"><i class="fa-regular fa-calendar"></i> 13 April 2002</div>
-                <div class="tag"><i class="fa-solid fa-location-dot"></i> Saint Petersburg, Russia</div>
+        <div class="contact-grid">
+            <div class="contact-item">✉ de2334600@gmail.com</div>
+            <div class="contact-item">📞 emergency services</div>
+        </div>
+
+        <div class="meta-flex">
+            <div class="meta-badge">📅 13 April 2002</div>
+            <div class="meta-badge">📍 Saint Petersburg, Russia</div>
+        </div>
+    </div>
+
+    <!-- PROFILE SECTION -->
+    <div class="card">
+        <h2>⚡ Profile</h2>
+        <p>
+            Master’s student at <span class="highlight">Peter the Great St. Petersburg Polytechnic University (SPbPU)</span>, 
+            specializing in <span class="highlight">Machine Learning</span>, with a Bachelor’s degree in Mathematics from 
+            <span class="highlight">Defence Services Academy (DSA)</span>.
+        </p>
+        <p>
+            Interested in Machine Learning, signal analysis, Software-Defined Radio (SDR), and object detection. 
+            Currently exploring how signals received through SDR can be analyzed and classified using Machine Learning methods 
+            to identify different objects, particularly airborne objects.
+        </p>
+    </div>
+
+    <!-- EDUCATION SECTION -->
+    <div class="card">
+        <h2>🎓 Education</h2>
+        
+        <div class="timeline-item">
+            <div class="timeline-title">Peter the Great St. Petersburg Polytechnic University (SPbPU)</div>
+            <div class="timeline-subtitle">Master’s Degree — Machine Learning</div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px;">Program: 27.04.04.08</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-title">Defence Services Academy (DSA)</div>
+            <div class="timeline-subtitle">Bachelor of Science (BSc) — Mathematics</div>
+            <div class="thesis-box">
+                <strong>Bachelor’s Thesis:</strong> Solving Linear Programming Problems Using the Dual Simplex Method
             </div>
         </div>
     </div>
 
-    <!-- PROFILE CARD -->
+    <!-- PROFESSIONAL EXPERIENCE SECTION -->
     <div class="card">
-        <h2><i class="fa-regular fa-user"></i> Profile</h2>
-        <p>Master's student at Peter the Great St. Petersburg Polytechnic University (SPbPU), specializing in Machine Learning, with a Bachelor's degree in Mathematics from Defence Services Academy (DSA).</p>
-        <br>
-        <p>Interested in Machine Learning, signal analysis, Software-Defined Radio (SDR), and object detection. Currently exploring how signals received through SDR can be analyzed and classified using Machine Learning methods to identify different objects, particularly airborne objects.</p>
-    </div>
-
-    <!-- EDUCATION CARD -->
-    <div class="card">
-        <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
-        
-        <div class="item">
-            <div class="item-title">Peter the Great St. Petersburg Polytechnic University (SPbPU)</div>
-            <div class="item-sub">Master's Degree — Machine Learning (Program: 27.04.04.08)</div>
-        </div>
-        
-        <div class="item" style="margin-top: 14px;">
-            <div class="item-title">Defence Services Academy (DSA)</div>
-            <div class="item-sub">Bachelor of Science (BSc) — Mathematics</div>
-            <div class="item-desc">
-                <strong>Bachelor's Thesis:</strong> Solving Linear Programming Problems Using the Dual Simplex Method
-            </div>
+        <h2>⚓ Professional Experience</h2>
+        <div class="timeline-item">
+            <div class="timeline-title">Navy</div>
+            <div class="timeline-subtitle">Duration — 2 Years</div>
+            <ul class="bullet-list" style="margin-top: 10px;">
+                <li>Experience working in a structured and disciplined environment.</li>
+                <li>Developed teamwork, responsibility, and the ability to work under demanding conditions.</li>
+                <li>Developed an interest in technologies applicable to maritime and ship-based systems.</li>
+            </ul>
         </div>
     </div>
 
-    <!-- EXPERIENCE CARD -->
+    <!-- LANGUAGES SECTION -->
     <div class="card">
-        <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
-        <div class="item-title">Navy</div>
-        <div class="item-sub">2 Years</div>
-        <ul style="margin-top: 6px;">
-            <li>Experience working in a structured and disciplined environment.</li>
-            <li>Developed teamwork, responsibility, and the ability to work under demanding conditions.</li>
-            <li>Developed an interest in technologies applicable to maritime and ship-based systems.</li>
-        </ul>
-    </div>
-
-    <!-- LANGUAGES CARD -->
-    <div class="card">
-        <h2><i class="fa-solid fa-language"></i> Languages</h2>
-        
-        <div class="lang-item">
-            <div class="lang-info">
+        <h2>🌐 Languages</h2>
+        <div class="lang-container">
+            <div class="lang-card">
                 <span class="lang-name">Burmese</span>
                 <span class="lang-level">Native</span>
             </div>
-            <div class="progress-bar"><div class="progress" style="width: 100%;"></div></div>
-        </div>
-
-        <div class="lang-item">
-            <div class="lang-info">
-                <span class="lang-name">English</span>
-                <span class="lang-level">Level 4</span>
-            </div>
-            <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
-        </div>
-
+            <div class="lang-card">
